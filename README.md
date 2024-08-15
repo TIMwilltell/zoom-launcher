@@ -4,12 +4,10 @@ A Zsh plugin to launch Zoom meetings from the command line. This plugin allows y
 
 ## Installation
 
-If you use a plugin manager like `zinit`, `antigen`, or `oh-my-zsh`, the installation process will be straightforward. Clone this repository and add it to your `.zshrc`.
-
 1. Clone the repository into your custom plugins directory:
 
    ```sh
-   git clone https://github.com/yourusername/zsh-zoom-plugin.git $ZSH_CUSTOM/plugins/zsh-zoom-plugin
+   git clone https://github.com/yourusername/zsh-zoom-plugin.git $ZSH_CUSTOM/plugins/zoom-launcher
    ```
 
 2. Add `zoom-launcher` to the plugins array in your `.zshrc`:
@@ -17,6 +15,13 @@ If you use a plugin manager like `zinit`, `antigen`, or `oh-my-zsh`, the install
    ```sh
    plugins=(... zoom-launcher)
    ```
+
+4. Zoom Launcher expects a meetings file in your $HOME directory
+
+   ```sh
+   # $HOME/.zoom_meetings
+   meetings=()
+   ``` 
 
 3. Reload your shell:
 
@@ -26,11 +31,12 @@ If you use a plugin manager like `zinit`, `antigen`, or `oh-my-zsh`, the install
 
 ## Usage
 
-- Add a meeting:
-- Remove a meeting:
-- List stored meetings:
-- Launch a meeting:
+- -h  help message
+- -a  Add a meeting
+- -r  Remove a meeting
+- -l  List stored meetings
+- -s  Launch a meeting
 
 ## Features
 
-- Tab completion for stored meetings.
+- Tab completion for flags and saved meetings
