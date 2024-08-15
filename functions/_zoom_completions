@@ -1,0 +1,38 @@
+#compdef zoom 
+
+
+_zoom_completions () {
+
+	local meetings_file="$HOME/.zoom_meetings"
+	local -A meetings 
+	if [[ -f "$meetings_file" ]]; then 
+		source "$meetings_file"
+	else
+		echo "Error: cant find $meetings_file"
+		return 1
+	fi
+
+	local -a flags
+	flags=(
+		'-a[add a new meeting]:name\:id'      # Completion for -a flag
+		'-r[remove a meeting]:name:->remove'  # Completion for -r flag
+		'-l[list all meetings]'               # Completion for -l flag
+		'-h[display help]'                    # Completion for -h flag
+		'-s[start meeting]:name:->start'      # Completion for -s flag
+	)
+
+	_arguments \
+		$flags
+
+
+	case $state in
+		remove)
+			local options=(${(k)meetings})
+			compadd "$@" -- $options
+			;;
+		start)
+			local options=(${(k)meetings})
+			compadd "$@" -- $options
+			;;
+	esac
+}
